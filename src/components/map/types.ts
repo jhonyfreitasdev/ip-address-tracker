@@ -1,5 +1,5 @@
 export type MapTypes = {
-    ipAddress: number,
+    ip: number,
     lat: number,
     lng: number,
     location: string,

@@ -8,15 +8,19 @@ import './index.sass'
 import 'leaflet/dist/leaflet.css';
 
 export const Map = () => {
-    const [geolocation, setGeolocation] = useState()
-
-
-    const  [mapInfo, setMapInfo] = useState <MapTypes> ( )
+    const [mapInfo, setMapInfo] = useState<MapTypes>()
 
     useEffect(() => {
         const fetchData = async () => {
             const geolocation = await getGeolocation()
-            setGeolocation(geolocation)
+
+            setMapInfo({
+                ip: geolocation.ip,
+                lat: geolocation.location.lat,
+                lng: geolocation.location.lng,
+                location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
+                timezone: geolocation.location.timezone
+            })
         }
 
         fetchData()
@@ -24,11 +28,11 @@ export const Map = () => {
 
     useEffect(() => {
         const map = L.map('map').setView([51.505, -0.09], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap contributors'}).addTo(map);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
 
         return () => {
-            map.remove(); 
+            map.remove();
         };
     }, [])
 
