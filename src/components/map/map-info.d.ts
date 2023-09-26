@@ -1,4 +1,4 @@
-export type MapTypes = {
+export type MapInfoTypes = {
     ip: number,
     lat: number,
     lng: number,

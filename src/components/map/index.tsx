@@ -2,13 +2,13 @@ import L from 'leaflet';
 import { useState, useEffect } from 'react';
 
 import { getGeolocation } from '../../services/geolocation.api';
-import { MapTypes } from './types';
+import { MapInfoTypes } from './map-info';
 
 import './index.sass'
 import 'leaflet/dist/leaflet.css';
 
 export const Map = () => {
-    const [mapInfo, setMapInfo] = useState<MapTypes>()
+    const [mapInfo, setMapInfo] = useState<MapInfoTypes>()
 
     useEffect(() => {
         const fetchData = async () => {
