@@ -1,11 +1,10 @@
 import { createContext, useState } from "react"
 
+import { ProviderProps } from "../types/provider-props"
+
 type IpContextType = {
     ipAddress: string;
     setIpAddress: (ip: string) => void;
-}
-type IpProviderProps = {
-    children: React.ReactNode;
 }
 
 export const IpContext = createContext<IpContextType>({
@@ -13,7 +12,7 @@ export const IpContext = createContext<IpContextType>({
     setIpAddress: () => {}
 })
 
-export const IpProvider: React.FC<IpProviderProps> = ({ children }) => {
+export const IpProvider: React.FC<ProviderProps> = ({ children }) => {
     const [ipAddress, setIpAddress] = useState<string>("")
 
     return (

@@ -1,20 +1,22 @@
 import L from 'leaflet';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 
 import { getGeolocation } from '../../services/geolocation.api';
-import { MapInfoTypes } from './map-info';
+import { IpContext } from '../../context/ip-value-context';
+import { MapContext } from '../../context/map-info-context';
 
 import './index.sass'
 import 'leaflet/dist/leaflet.css';
-import { IpContext } from '../../context/ip-value-context';
 
-export const Map = () => {
-    const [mapInfo, setMapInfo] = useState<MapInfoTypes>()
+export const Map: React.FC = () => {
+    const { mapInfo, setMapInfo } = useContext(MapContext)
     const { ipAddress } = useContext(IpContext)
 
     useEffect(() => {
         const fetchData = async () => {
             const geolocation = await getGeolocation(ipAddress)
+            console.log(geolocation);
+            
 
             setMapInfo({
                 ip: geolocation.ip,
@@ -26,7 +28,7 @@ export const Map = () => {
         }
 
         fetchData()
-    }, [ipAddress])
+    }, [ipAddress, setMapInfo])
 
     useEffect(() => {
         if (mapInfo?.lat === undefined) {
