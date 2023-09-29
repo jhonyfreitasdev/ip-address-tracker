@@ -2,9 +2,11 @@ import { useContext } from 'react';
 
 import { MapContext } from "../../context/map-info-context";
 
+import './index.sass'
+
 export const LocationInfo: React.FC = () => {
     const { mapInfo } = useContext(MapContext)
- 
+     
     return ( 
         <div className="container-location">
             <div className="div-info ip-address"> 

@@ -15,39 +15,35 @@ export const Map: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             const geolocation = await getGeolocation(ipAddress)
-            console.log(geolocation);
             
-
-            setMapInfo({
-                ip: geolocation.ip,
-                lat: geolocation.location.lat,
-                lng: geolocation.location.lng,
-                location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
-                timezone: geolocation.location.timezone
-            })
+            if (geolocation.code === 403) {
+                console.log(geolocation.messages);
+            } else {
+                setMapInfo({
+                    ip: geolocation.ip,
+                    lat: geolocation.location.lat,
+                    lng: geolocation.location.lng,
+                    location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
+                    timezone: geolocation.location.timezone
+                })
+            }
         }
 
         fetchData()
     }, [ipAddress, setMapInfo])
-
+    
     useEffect(() => {
-        if (mapInfo?.lat === undefined) {
-            const map = L.map('map').setView([-23.5475, -46.63611], 13);
+        let map = L.map('map').setView([-23.5475, -46.63611], 13);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
+        if (mapInfo !== undefined) {
+            map = L.map('map').setView([mapInfo.lat, mapInfo.lng], 13);
+        } 
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
 
-            return () => {
-                map.remove();
-            };
-        } else {
-            const map = L.map('map').setView([mapInfo.lat, mapInfo.lng], 13);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
-
-            return () => {
-                map.remove();
-            };
-        }
+        return () => {
+            map.remove();
+        };
     }, [mapInfo])
     
     return (

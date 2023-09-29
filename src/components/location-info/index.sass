@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap")
+
+.container-location
+    position: absolute
+    top: 22.5vh
+    left: 50%
+    z-index: 1
+    transform: translateX(-50%)
+    display: flex
+    justify-content: space-between
+    align-items: center
+    background-color: #ffffff
+    font-family: 'Rubik', sans-serif
+    border-radius: 18px
+    width: 1100px
+    padding: 28px
+
+    & > *:not(:nth-child(4))::after
+        position: absolute
+        top: 50%
+        right: -35%
+        transform: rotate(90deg)
+        display: block
+        content: ""
+        background-color: #00000070
+        width: 60px
+        height: 0.1px
+
+.div-info
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: start
+    width: 20%
+    height: 80px
+        
+
+.description
+    color: grey
+    text-transform: uppercase
+    font-size: 13px
+    margin-bottom: 15px
+
+.content
+    font-size: 28px
+    font-weight: 900
