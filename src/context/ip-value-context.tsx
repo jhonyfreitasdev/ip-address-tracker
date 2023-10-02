@@ -3,20 +3,20 @@ import { createContext, useState } from "react"
 import { ProviderProps } from "../types/provider-props"
 
 type IpContextType = {
-    ipAddress: string;
-    setIpAddress: (ip: string) => void;
+    inputValue: string;
+    setInputValue: (ip: string) => void;
 }
 
 export const IpContext = createContext<IpContextType>({
-    ipAddress: '',
-    setIpAddress: () => {}
+    inputValue: '',
+    setInputValue: () => {}
 })
 
 export const IpProvider: React.FC<ProviderProps> = ({ children }) => {
-    const [ipAddress, setIpAddress] = useState<string>("")
+    const [inputValue, setInputValue] = useState<string>("")
 
     return (
-        <IpContext.Provider value={{ ipAddress, setIpAddress }}>
+        <IpContext.Provider value={{ inputValue, setInputValue }}>
            {children}
         </IpContext.Provider>
     )
