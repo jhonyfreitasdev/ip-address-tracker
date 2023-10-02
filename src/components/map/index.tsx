@@ -10,11 +10,11 @@ import 'leaflet/dist/leaflet.css';
 
 export const Map: React.FC = () => {
     const { mapInfo, setMapInfo } = useContext(MapContext)
-    const { ipAddress } = useContext(IpContext)
+    const { inputValue } = useContext(IpContext)
 
     useEffect(() => {
         const fetchData = async () => {
-            const geolocation = await getGeolocation(ipAddress)
+            const geolocation = await getGeolocation(inputValue)
 
             if (geolocation.code === 403) {
                 console.log(geolocation.messages);
@@ -31,7 +31,7 @@ export const Map: React.FC = () => {
         }
 
         fetchData()
-    }, [ipAddress, setMapInfo])
+    }, [inputValue, setMapInfo])
 
     useEffect(() => {
         let map = L.map('map').setView([-23.5475, -46.63611], 13);
