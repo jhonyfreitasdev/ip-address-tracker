@@ -15,11 +15,12 @@ export const Map: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             const geolocation = await getGeolocation(ipAddress)
-            
+
             if (geolocation.code === 403) {
                 console.log(geolocation.messages);
             } else {
                 setMapInfo({
+                    code: geolocation.code,
                     ip: geolocation.ip,
                     lat: geolocation.location.lat,
                     lng: geolocation.location.lng,
@@ -31,24 +32,33 @@ export const Map: React.FC = () => {
 
         fetchData()
     }, [ipAddress, setMapInfo])
-    
+
     useEffect(() => {
         let map = L.map('map').setView([-23.5475, -46.63611], 13);
 
         if (mapInfo !== undefined) {
             map = L.map('map').setView([mapInfo.lat, mapInfo.lng], 13);
-        } 
-        
+        }
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
 
         return () => {
             map.remove();
         };
     }, [mapInfo])
-    
+
     return (
         <section>
-            <div id="map" style={{ width: '100%', height: '100%' }}></div>;
+            {mapInfo?.code === undefined ?
+                <>
+                    <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
+                    <div className='not-found'>
+                        <p> Endereço de Ip ou domínio não encontrado </p>
+                    </div>
+                </>
+
+                : <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
+            }
         </section>
     )
 }
