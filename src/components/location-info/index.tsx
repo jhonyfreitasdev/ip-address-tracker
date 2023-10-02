@@ -10,17 +10,17 @@ export const LocationInfo: React.FC = () => {
     return ( 
         <div className="container-location">
             <div className="div-info ip-address"> 
-                <p className="description"> IP Address </p>
+                <p className="description"> Endereço de IP </p>
                 <p className="content"> {mapInfo?.ip} </p>
             </div>  
 
             <div className="div-info location"> 
-                <p className="description"> Location </p>
+                <p className="description"> Localização </p>
                 <p className="content"> {mapInfo?.location} </p>
             </div>
 
             <div className="div-info time-zone"> 
-                <p className="description"> Time zone </p>
+                <p className="description"> Fuso horário </p>
                 <p className="content"> {mapInfo?.timezone} </p>
             </div>
 
