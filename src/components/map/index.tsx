@@ -16,18 +16,15 @@ export const Map: React.FC = () => {
         const fetchData = async () => {
             const geolocation = await getGeolocation(inputValue)
 
-            if (geolocation.code === 403) {
-                console.log(geolocation.messages);
-            } else {
-                setMapInfo({
-                    code: geolocation.code,
-                    ip: geolocation.ip,
-                    lat: geolocation.location.lat,
-                    lng: geolocation.location.lng,
-                    location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
-                    timezone: geolocation.location.timezone
-                })
-            }
+            setMapInfo({
+                code: geolocation.code,
+                ip: geolocation.ip,
+                lat: geolocation.location.lat,
+                lng: geolocation.location.lng,
+                location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
+                timezone: geolocation.location.timezone
+            })
+
         }
 
         fetchData()
@@ -45,7 +42,7 @@ export const Map: React.FC = () => {
         return () => {
             map.remove();
         };
-    }, [mapInfo])
+    }, [])
 
     return (
         <section>
