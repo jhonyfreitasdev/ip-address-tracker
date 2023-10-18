@@ -13,31 +13,26 @@ let map: L.Map | null = null;
 export const Map: React.FC = () => {
     const { mapInfo, setMapInfo } = useContext(MapContext)
     const { inputValue } = useContext(IpContext)
-    const [searchStatus, setSearchStatus] = useState<boolean>(false)
-
-    {/* {mapInfo?.code === undefined ?
-                <>
-                    <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
-                    <div className='not-found'>
-                        <p> Endereço de Ip ou domínio não encontrado </p>
-                    </div>
-                </>
-
-                : <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
-            } */}
+    const [foundAddress, setFoundAddress] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchData = async () => {
             const geolocation = await getGeolocation(inputValue)
 
-            setMapInfo({
-                ip: geolocation.ip,
-                lat: geolocation.location.lat,
-                lng: geolocation.location.lng,
-                location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
-                timezone: geolocation.location.timezone,
-                isp: geolocation.isp
-            })
+            if (geolocation['code'] === 422) {
+                setFoundAddress(false)
+            } else {
+                setFoundAddress(true)
+
+                setMapInfo({
+                    ip: geolocation.ip,
+                    lat: geolocation.location.lat,
+                    lng: geolocation.location.lng,
+                    location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
+                    timezone: geolocation.location.timezone,
+                    isp: geolocation.isp
+                })
+            }
         }
 
         fetchData()
@@ -64,7 +59,17 @@ export const Map: React.FC = () => {
 
     return (
         <section>
-            <div id="map" style={{ width: '100%', height: '100%', zIndex: 0 }}></div>
+            {   foundAddress === false ?
+                <>
+                    <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
+
+                    <div className='not-found'>
+                        <p> Endereço de Ip ou domínio não encontrado </p>
+                    </div>
+                </>
+
+                : <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '0' }}></div>
+            }
         </section>
     )
 }
