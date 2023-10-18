@@ -4,12 +4,12 @@ import { MapInfoTypes } from "../types/map-info";
 import { ProviderProps } from "../types/provider-props";
 
 const defaultObject: MapInfoTypes = {
-    code:0,
     ip: 0,
     lat: 0,
     lng: 0,
     location: "",
-    timezone: ""
+    timezone: "",
+    isp: ""
 }   
 
 type MapContextType = {
