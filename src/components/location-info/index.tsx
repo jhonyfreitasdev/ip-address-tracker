@@ -26,7 +26,7 @@ export const LocationInfo: React.FC = () => {
 
             <div className="div-info isp"> 
                 <p className="description"> ISP </p>
-                <p className="content"> {} </p>
+                <p className="content"> {mapInfo?.isp} </p>
             </div>
         </div>
     )
