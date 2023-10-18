@@ -1,5 +1,5 @@
 import L from 'leaflet';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 
 import { getGeolocation } from '../../services/geolocation.api';
 import { IpContext } from '../../context/ip-value-context';
@@ -8,45 +8,14 @@ import { MapContext } from '../../context/map-info-context';
 import './index.sass'
 import 'leaflet/dist/leaflet.css';
 
+let map: L.Map | null = null;
+
 export const Map: React.FC = () => {
     const { mapInfo, setMapInfo } = useContext(MapContext)
     const { inputValue } = useContext(IpContext)
+    const [searchStatus, setSearchStatus] = useState<boolean>(false)
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const geolocation = await getGeolocation(inputValue)
-
-            setMapInfo({
-                code: geolocation.code,
-                ip: geolocation.ip,
-                lat: geolocation.location.lat,
-                lng: geolocation.location.lng,
-                location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
-                timezone: geolocation.location.timezone
-            })
-
-        }
-
-        fetchData()
-    }, [inputValue, setMapInfo])
-
-    useEffect(() => {
-        let map = L.map('map').setView([-23.5475, -46.63611], 13);
-
-        if (mapInfo !== undefined) {
-            map = L.map('map').setView([mapInfo.lat, mapInfo.lng], 13);
-        }
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
-
-        return () => {
-            map.remove();
-        };
-    }, [])
-
-    return (
-        <section>
-            {mapInfo?.code === undefined ?
+    {/* {mapInfo?.code === undefined ?
                 <>
                     <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
                     <div className='not-found'>
@@ -55,7 +24,48 @@ export const Map: React.FC = () => {
                 </>
 
                 : <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
+            } */}
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const geolocation = await getGeolocation(inputValue)
+
+            setMapInfo({
+                ip: geolocation.ip,
+                lat: geolocation.location.lat,
+                lng: geolocation.location.lng,
+                location: `${geolocation.location.region}, ${geolocation.location.country} ${geolocation.location.city}`,
+                timezone: geolocation.location.timezone,
+                isp: geolocation.isp
+            })
+        }
+
+        fetchData()
+    }, [inputValue, setMapInfo])
+
+    useEffect(() => {
+        if (!map) {
+            map = L.map('map').setView([-23.49185, -46.84877], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
+        }
+
+        if (mapInfo !== undefined) {
+
+            map.setView([mapInfo.lat, mapInfo.lng], 13);
+        }
+
+        return () => {  //Essa função é executada quando o componente é desmontado ou quando alguma das dependências do useEffect muda
+            if (map) {
+                map.remove();
+                map = null;
             }
+        };
+    }, [mapInfo]);
+
+    return (
+        <section>
+            <div id="map" style={{ width: '100%', height: '100%', zIndex: 0 }}></div>
         </section>
     )
 }
+
