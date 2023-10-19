@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# IP Address Tracker
+Uma aplicação que buscar por endereços de ip ou domínios e mostra no mapa sua localização. 
+ 
+## 🔗 Acesso ao projeto
+<a href="https://ip-address-tracker-jhonyfreitasdev.vercel.app">Clique aqui para ir para a página</a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[<img src="src/assets/gifs/tela.gif">](https://ip-address-tracker-jhonyfreitasdev.vercel.app)
 
-## Available Scripts
+## Descrição 
+- Pela barra de pesquisa você consegue buscar por um endereço de ip ou um domínio, onde será passado para um uma API chamada ipify que nos fornecerá informações de localização como latitude e longitude.
+- E com a latitude e longitude conseguimos renderizar a localização exata no mapa criado pela Leafflet, uma biblioteca do JavaScript.
+<br/>
 
-In the project directory, you can run:
+## Desafios
+- Um dos desafios enfrentados foi entender a API da ipify para aplicá-la corretamente no projeto para conseguir todas as informações necessárias.
+- Por mais que a biblioteca Leafflet de mapas interativos seja relativamente fácil, foi necessário separar um tempo para criar um ambiente para trabalhar com ela.
+- Como tem bastante informações passando de um componente para o outro, achei melhor criar contextos para ficar mais organizado. 
+<br/>
 
-### `npm start`
+## 🛠 Skills
+<div style="display: inline_block"><br>
+  <img align="center" alt="React" height="30" width="40" src="src/assets/icons/icon-react.png">
+  <img align="center" alt="TypeScript" height="30" width="40" src="src/assets/icons/icon-ts.png">
+  <img align="center" alt="Sass" height="30" width="40" src="src/assets/icons/icon-sass.png">
+</div><br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Esse é meu primeiro projeto de TypeScritp com o React.JS, usei o React Router Dom para definir a rota da aplicação, possui o Context API para passar diversas informações entre os componentes, a aplicação dos estilos foi feita através do pré-processador Sass.
+<br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📤 Feedback
+Se interessou pelo meu trabalho ou tem algum feedback? <br/> 
+Entre em contato comigo:
+<br/>
+ 
+<p align="left"> 
+ <a href="https://www.linkedin.com/in/jhony-freitas/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="40" height="35" /></a>
+ <a href ="https://api.whatsapp.com/send?phone=5511948127577&text" target="_blank" rel="noreferrer"><img src="./src/assets/icons/icon-whatsapp.png" width="40" height="35" /></a>
+ <a href ="mailto:jhony00._@hotmail.com" target="_blank" rel="noreferrer"><img src="src/assets/icons/icon-mail.png" width="40" height="35" /></a>
+ <a href="https://discord.com/users/jhonyFreitas#1359" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord.svg" width="40" height="35" /></a> 
 
-### `npm test`
+ </p>
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Passo a passo para rodar o projeto
 
-### `npm run build`
+### Para instalar os pacotes `npm install`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Para inicializar o projeto `npm start`
