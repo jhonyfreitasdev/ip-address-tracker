@@ -17,12 +17,13 @@ header
         margin-bottom: 15px
     
     .search-ip-bar
-        width: 450px
+        width: 100%
+        text-align: center
 
         .search-input
             border-radius: 15px 0 0 15px 
             padding: 15px
-            width: 85%
+            width: 50%
             cursor: pointer
 
             &::placeholder 
@@ -32,7 +33,7 @@ header
             background-color: #000000
             border-radius: 0 15px 15px 0
             padding: 15px
-            width: 15%
+            width: 5%
             cursor: pointer
             transition: .4s
 
@@ -43,3 +44,26 @@ header
             &:hover
                 background-color: #222222
 
+@media screen and (max-width: 900px)
+    header .search-ip-bar .btn-find-address
+        width: 10%
+
+@media screen and (max-width: 665px)
+    header .search-ip-bar .search-input
+        width: 80%
+
+@media screen and (max-width: 435px)
+    header
+        padding: 20px 10px
+
+    header .title 
+        font-size: 26px
+
+    header .search-ip-bar .search-input
+        width: 82%
+        font-size: 11px
+        padding: 10px
+
+    header .search-ip-bar .btn-find-address
+        width: 7%
+        padding: 10px 15px

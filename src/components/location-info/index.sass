@@ -33,7 +33,6 @@
     justify-content: flex-start
     width: 20%
     min-height: 80px
-        
 
 .description
     color: grey
@@ -44,3 +43,46 @@
 .content
     font-size: 27px
     font-weight: 900
+
+@media screen and (max-width: 1200px)
+    .container-location
+        width: 85%
+
+    .description
+        font-size: 12px
+
+    .content
+        font-size: 19px
+
+@media screen and (max-width: 900px)
+    .content
+        font-size: 15px
+
+@media screen and (max-width: 665px)
+    .container-location
+        top: 20vh
+        flex-direction: column
+        padding: 15px
+        width: auto
+
+        & > *:not(:nth-child(4))::after
+            display: none
+
+    .div-info
+        width: 100%
+        justify-content: center
+        align-items: center
+
+    .description
+        margin-bottom: 7px
+
+    .content
+        font-size: 15px
+        text-align: center
+
+@media screen and (max-width: 435px)
+    .container-location
+        top: 15vh
+        flex-direction: column
+        padding: 15px
+        width: 72%
