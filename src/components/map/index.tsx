@@ -42,11 +42,13 @@ export const Map: React.FC = () => {
         if (!map) {
             map = L.map('map').setView([-23.49185, -46.84877], 13);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
+            L.marker([-23.49185, -46.84877], { icon: L.icon({ iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png' }) }).addTo(map);
         }
 
         if (mapInfo !== undefined) {
 
             map.setView([mapInfo.lat, mapInfo.lng], 13);
+            L.marker([mapInfo.lat, mapInfo.lng], { icon: L.icon({ iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png' }) }).addTo(map);
         }
 
         return () => {  //Essa função é executada quando o componente é desmontado ou quando alguma das dependências do useEffect muda
@@ -59,7 +61,7 @@ export const Map: React.FC = () => {
 
     return (
         <section>
-            {   foundAddress === false ?
+            {foundAddress === false ?
                 <>
                     <div id="map" style={{ width: '100%', height: '100%', position: 'relative', zIndex: '-1' }}></div>
 
