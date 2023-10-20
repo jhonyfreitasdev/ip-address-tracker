@@ -20,7 +20,7 @@ Uma aplicação que buscar por endereços de ip ou domínios e mostra no mapa su
 ## 🛠 Skills
 <div style="display: inline_block"><br>
   <img align="center" alt="React" height="30" width="40" src="src/assets/icons/icon-react.png">
-  <img align="center" alt="TypeScript" height="30" width="40" src="src/assets/icons/icon-ts.png">
+  <img align="center" alt="TypeScript" height="30" width="30" src="src/assets/icons/icon-ts.png">
   <img align="center" alt="Sass" height="30" width="40" src="src/assets/icons/icon-sass.png">
 </div><br/>
 
