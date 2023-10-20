@@ -4,7 +4,7 @@ Uma aplicação que buscar por endereços de ip ou domínios e mostra no mapa su
 ## 🔗 Acesso ao projeto
 <a href="https://ip-address-tracker-jhonyfreitasdev.vercel.app">Clique aqui para ir para a página</a>
 
-[<img src="src/assets/gifs/tela.gif">](https://ip-address-tracker-jhonyfreitasdev.vercel.app)
+[<img src="./src/assets/gifs/tela.gif">](https://ip-address-tracker-jhonyfreitasdev.vercel.app)
 
 ## Descrição 
 - Pela barra de pesquisa você consegue buscar por um endereço de ip ou um domínio, onde será passado para um uma API chamada ipify que nos fornecerá informações de localização como latitude e longitude.
