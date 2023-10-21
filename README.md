@@ -7,8 +7,8 @@ Uma aplicação que buscar por endereços de ip ou domínios e mostra no mapa su
 [<img src="./src/assets/gifs/tela.gif">](https://ip-address-tracker-jhonyfreitasdev.vercel.app)
 
 ## Descrição 
-- Pela barra de pesquisa você consegue buscar por um endereço de ip ou um domínio, onde será passado para um uma API chamada ipify que nos fornecerá informações de localização como latitude e longitude.
-- E com a latitude e longitude conseguimos renderizar a localização exata no mapa criado pela Leafflet, uma biblioteca do JavaScript.
+- Pela barra de pesquisa você consegue buscar por um endereço de ip ou um domínio, onde será passado para uma API chamada ipify que nos fornecerá informações de localização como latitude e longitude.
+- Com a latitude e longitude conseguimos renderizar a localização exata no mapa criado pela Leafflet, uma biblioteca do JavaScript.
 <br/>
 
 ## Desafios
